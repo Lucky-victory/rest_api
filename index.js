@@ -7,6 +7,8 @@ const pieRepo=require('./repos/pieRepo');
 app.use(cors());
 app.use(express.json());
 const router=express.Router();
+app.use('/api/',router);
+
 router.get('/', (req, res,next) => {
 pieRepo.get(function(data){
     res.status(200).json({
@@ -163,7 +165,6 @@ router.patch('/:id',(req,res,next)=>{
   });
 
 });
-app.use('/api/',router);
 function errorBuilder(err){
   return {
       "status":500,
@@ -178,7 +179,7 @@ function errorBuilder(err){
       }
 }
 app.use((err,req,res,next)=>{
-     console.log(errorBuilder(err))
+    errorBuilder(err)
 next(err)
 });
 app.use((err,req,res,next)=>{
