@@ -17,6 +17,12 @@
    "name":"peach",
    "price":5.60,
    "slicedPrice":5.20
+ },
+ {
+   "id":4,
+   "name":"rice",
+   "price":"8.60",
+   "slicedPrice":"7.50"
  }
   
   ]
