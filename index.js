@@ -7,12 +7,13 @@ const pieRepo=require('./repos/pieRepo');
 app.use(cors());
 app.use(express.json());
 const router=express.Router();
-app.use('/api/',router);
 app.get('/',(req,res)=>{
   res.status(200).json({
     message:'hello there'
   })
 })
+app.use('/api/',router);
+
 router.get('/', (req, res,next) => {
 pieRepo.get(function(data){
     res.status(200).json({
