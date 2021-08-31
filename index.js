@@ -8,7 +8,11 @@ app.use(cors());
 app.use(express.json());
 const router=express.Router();
 app.use('/api/',router);
-
+app.get('/',(req,res)=>{
+  res.status(200).json({
+    message:'hello there'
+  })
+})
 router.get('/', (req, res,next) => {
 pieRepo.get(function(data){
     res.status(200).json({
@@ -179,7 +183,7 @@ function errorBuilder(err){
       }
 }
 app.use((err,req,res,next)=>{
-    errorBuilder(err)
+     console.log(errorBuilder(err))
 next(err)
 });
 app.use((err,req,res,next)=>{
@@ -187,6 +191,6 @@ app.use((err,req,res,next)=>{
 
 });
 
-app.listen(port, () => {
+let server=app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`)}
 );
